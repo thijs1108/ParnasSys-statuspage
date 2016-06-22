@@ -1,0 +1,102 @@
+{
+    "name": "cachethq/cachet",
+    "description": "An open source status page system, for everyone.",
+    "keywords": ["laravel", "cachet", "alt-three", "status", "page"],
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "James Brooks",
+            "email": "james@alt-three.com"
+        },
+        {
+            "name": "Graham Campbell",
+            "email": "graham@alt-three.com"
+        },
+        {
+            "name": "Joseph Cohen",
+            "email": "joe@alt-three.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.37",
+        "alt-three/badger": "^3.0",
+        "alt-three/bus": "^1.0",
+        "alt-three/emoji": "^3.0",
+        "alt-three/validator": "^1.4",
+        "barryvdh/laravel-cors": "^0.8",
+        "doctrine/dbal": "^2.5",
+        "fideloper/proxy": "^3.1",
+        "graham-campbell/binput": "^3.3",
+        "graham-campbell/core": "^4.2",
+        "graham-campbell/markdown": "^6.0",
+        "graham-campbell/exceptions": "^8.3",
+        "guzzlehttp/guzzle": "^6.2",
+        "jenssegers/date": "^3.1",
+        "mccool/laravel-auto-presenter": "^4.2",
+        "pragmarx/google2fa": "^0.7.1",
+        "rcrowe/twigbridge": "^0.9.2",
+        "roumen/feed": "^2.10.3"
+    },
+    "require-dev": {
+        "alt-three/testbench": "^1.1",
+        "filp/whoops": "^2.0",
+        "fzaninotto/faker": "^1.5",
+        "graham-campbell/testbench-core": "^1.1",
+        "mockery/mockery": "0.9.5",
+        "phpunit/phpunit": "4.8.21",
+        "symfony/css-selector": "^3.0",
+        "symfony/dom-crawler": "^3.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "files": [
+            "app/Http/helpers.php"
+        ],
+        "psr-4": {
+            "CachetHQ\\Cachet\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CachetHQ\\Tests\\Cachet\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\"",
+            "php artisan key:generate"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize --force",
+            "php artisan config:cache",
+            "php artisan route:cache"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize --force",
+            "php artisan config:cache",
+            "php artisan route:cache"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        },
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.2-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
