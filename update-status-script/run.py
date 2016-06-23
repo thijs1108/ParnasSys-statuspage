@@ -1,10 +1,16 @@
-import requests, time
+import requests, time, json
+from pprint import pprint
 from Component import Component
-statusboardlink = "http://localhost/api/v1"
-token = ""
+
+with open('settings.json') as data_file:    
+    data = json.load(data_file)
+
+
+statusboardlink = data['statusboardlink']
+token = data['token']
 components = []
-components.append(Component(statusboardlink, token, 1, 1, 'http://start.parnassys.net'))
-components.append(Component(statusboardlink, token, 3, 2, 'http://parnassys.zendesk.com/access/normal'))
+for component in data['components']:
+    components.append(Component(statusboardlink, token, component['Cid'], component['Mid'], component['location']))
 
 while True:
     for component in components:
