@@ -17,15 +17,15 @@
 </div>
 @endif
 
-@if($display_metrics && $app_graphs)
-<div class="section-metrics">
-    @include('partials.metrics')
-</div>
-@endif
-
 @if(!$scheduled_maintenance->isEmpty())
 <div class="section-scheduled">
     @include('partials.schedule')
+</div>
+@endif
+
+@if($display_metrics && $app_graphs)
+<div class="section-metrics">
+    @include('partials.metrics')
 </div>
 @endif
 
