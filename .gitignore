@@ -2,4 +2,5 @@
 node_modules
 phpunit.xml
 vendor
-update-status-scripts/settings.json
+update-status-script/settings.json
+update-status-script/__pycache__/
