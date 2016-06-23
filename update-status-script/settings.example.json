@@ -1,0 +1,16 @@
+{
+    "token" : "USER_TOKEN_HERE",
+	"statusboardlink" : "http://localhost/api/v1",
+	
+	"components":[
+		{
+			"Cid":1,
+			"Mid":1,
+			"location": "http://localhost/"
+		},
+		{
+			"Cid":2,
+			"Mid":5,
+			"location": "http://localhost/2/"
+		}]
+}
