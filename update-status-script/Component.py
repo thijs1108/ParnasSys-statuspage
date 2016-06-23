@@ -41,6 +41,9 @@ class Component(object):
     def hasMetric(self):
         return (self.metricId>=0)
 
+    def hasComponent(self):
+        return (self.Cid>=0)
+
     def tooMuchNoAnswer(self, tooMuch):
         self.times_no_answer+=1
         return (self.times_no_answer>=tooMuch)

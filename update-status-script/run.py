@@ -15,18 +15,19 @@ for component in data['components']:
 while True:
     for component in components:
         responseTime = component.getResponseTime()
-        if(responseTime==-1):
-            component.resetSlowAnswer()
-            if(component.tooMuchNoAnswer(10)):
-                component.setStatus(4) #grote storing
-        elif(responseTime>800):
-            component.resetNoAnswer()
-            if(component.tooMuchSlowAnswer(10)):
-                component.setStatus(2) #performance issues
-        else:
-            component.resetSlowAnswer()
-            component.resetNoAnswer()
-            component.setStatus(1) #operationeel
+        if(component.hasComponent()):
+            if(responseTime==-1):
+                component.resetSlowAnswer()
+                if(component.tooMuchNoAnswer(10)):
+                    component.setStatus(4) #grote storing
+            elif(responseTime>800):
+                component.resetNoAnswer()
+                if(component.tooMuchSlowAnswer(10)):
+                    component.setStatus(2) #performance issues
+            else:
+                component.resetSlowAnswer()
+                component.resetNoAnswer()
+                component.setStatus(1) #operationeel
         if(component.hasMetric()):
             component.postMetricsPoints(responseTime)
     time.sleep(10)
