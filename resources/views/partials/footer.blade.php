@@ -21,6 +21,11 @@
                         <a class="btn btn-link" href="/statuspage/public/auth/logout">{{ trans('dashboard.logout') }}</a>
                     </li>
                     @endif
+                    @if(!$current_user)
+                    <li>
+                        <a class="btn btn-link" href="/statuspage/public/auth/login">Login</a>
+                    </li>
+                    @endif
                     <li>
                         <a class="btn btn-link" href="{{ route('feed.rss') }}">{{ trans('cachet.rss-feed') }}</a>
                     </li>
