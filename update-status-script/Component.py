@@ -7,22 +7,32 @@ from Cachet import Cachet
 
 class Component(object):
     
-    def __init__(self, statusboardlink, token, Cid, metricId, hyperlink):
+    def __init__(self, statusboardlink, token, Cid, metricId, hyperlink, name):
         self.statusboard = Cachet(statusboardlink,token)
         self.Cid = Cid
         self.metricId = metricId
         self.hyperlink = hyperlink
+        self.name = name
         self.times_no_answer = 0
         self.times_slow_answer = 0
+        self.status=0
 
     def getCid(self):
         return self.Cid;
+
+    def getName(self):
+        return self.name
 
     def getMetricId(self):
         return self.metricId
 
     def setStatus(self, status):
-        self.statusboard.putComponentsByID(self.Cid, status=status)
+        if(self.status!=status):
+            self.statusboard.putComponentsByID(self.Cid, status=status)
+            self.status=status
+            return True
+        else:
+            return False
 
     #returns http response time of instance
     #returns -1 if not reachable
