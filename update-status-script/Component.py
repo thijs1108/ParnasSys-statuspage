@@ -2,6 +2,7 @@
 
 import requests
 import time
+import wget
 from Cachet import Cachet
 
 class Component(object):
@@ -26,11 +27,8 @@ class Component(object):
     #returns http response time of instance
     #returns -1 if not reachable
     def getResponseTime(self):
-        payload = {"id": "1' and if (ascii(substr(database(), 1, 1))=115,sleep(3),null) --+"}
-        start = time.time()
         try:
-            r = requests.get(self.hyperlink, params=payload)
-            return (time.time() - start) * 1000
+            return requests.get(self.hyperlink).elapsed.total_seconds() * 1000
         except:
             return -1
 
