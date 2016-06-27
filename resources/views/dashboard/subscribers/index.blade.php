@@ -43,7 +43,7 @@
                             @endif
                         </div>
                         <div class="col-xs-3 text-right">
-                            <a href="/dashboard/subscribers/{{ $subscriber->id }}/delete" class="btn btn-danger confirm-action" data-method='DELETE'>{{ trans('forms.delete') }}</a>
+                            <a href="/statuspage/public/dashboard/subscribers/{{ $subscriber->id }}/delete" class="btn btn-danger confirm-action" data-method='DELETE'>{{ trans('forms.delete') }}</a>
                         </div>
                     </div>
                     @endforeach

@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-12">
                 @include('dashboard.partials.errors')
-                <form name="UserForm" class="form-vertical" role="form" action="/dashboard/user" method="POST">
+                <form name="UserForm" class="form-vertical" role="form" action="statuspage/public/dashboard/user" method="POST">
                     {!! csrf_field() !!}
                     <fieldset>
                         <div class="row">

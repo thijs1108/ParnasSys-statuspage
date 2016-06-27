@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-12">
             @include('dashboard.partials.errors')
-            <form name="SubscriberForm" class="form-vertical" role="form" action="/dashboard/subscribers/add" method="POST">
+            <form name="SubscriberForm" class="form-vertical" role="form" action="/statuspage/public/dashboard/subscribers/add" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <fieldset>
                 <div class="form-group">

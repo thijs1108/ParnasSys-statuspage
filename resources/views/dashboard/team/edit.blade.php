@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-12">
                 @include('dashboard.partials.errors')
-                <form name="UserForm" class="form-vertical" role="form" action="/dashboard/team/{{ $user->id }}" method="POST">
+                <form name="UserForm" class="form-vertical" role="form" action="/statuspage/public/dashboard/team/{{ $user->id }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <fieldset>
                         <div class="form-group">
@@ -34,9 +34,9 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">{{ trans('forms.update') }}</button>
                         @if($current_user->isAdmin)
-                        <a class="btn btn-info" href="/dashboard/user/{{ $user->id }}/api/regen">{{ trans('cachet.api.revoke') }}</a>
+                        <a class="btn btn-info" href="/statuspage/public/dashboard/user/{{ $user->id }}/api/regen">{{ trans('cachet.api.revoke') }}</a>
                         @if($current_user->id != $user->id)
-                        <a class="btn btn-danger confirm-action" href="/dashboard/team/{{ $user->id }}/delete" data-method="DELETE">{{ trans('forms.delete') }}</a>
+                        <a class="btn btn-danger confirm-action" href="/statuspage/public/dashboard/team/{{ $user->id }}/delete" data-method="DELETE">{{ trans('forms.delete') }}</a>
                         @endif
                         @endif
                     </div>

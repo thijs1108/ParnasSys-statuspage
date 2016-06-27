@@ -13,7 +13,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <form name="SettingsForm" class="form-vertical" role="form" action="/dashboard/settings" method="POST">
+                    <form name="SettingsForm" class="form-vertical" role="form" action="/statuspage/publics/dashboard/settings" method="POST">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         @include('dashboard.partials.errors')
                         <fieldset>
