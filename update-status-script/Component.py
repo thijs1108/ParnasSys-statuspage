@@ -30,7 +30,6 @@ class Component(object):
         start = time.time()
         try:
             r = requests.get(self.hyperlink, params=payload)
-            r.content
             return (time.time() - start) * 1000
         except:
             return -1

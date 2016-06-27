@@ -28,7 +28,7 @@
                             <h3>Log In</h3>
                         </div>
                         <br>
-                        <form method="POST" action="{{ route('auth.login', [], false) }}" accept-charset="UTF-8" autocomplete="off" name="{{ str_random(10) }}">
+                        <form method="POST" action="{{ URL::asset(route('auth.login', [], false)) }}" accept-charset="UTF-8" autocomplete="off" name="{{ str_random(10) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             @if(Session::has('error'))

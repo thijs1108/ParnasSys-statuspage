@@ -47,7 +47,7 @@
     <title>{{ $site_title }}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset={{ $font_subset }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ elixir('dist/css/all.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset(elixir('dist/css/all.css')) }}">
 
     @include('partials.stylesheet')
 
@@ -63,7 +63,7 @@
         var Global = {};
         Global.locale = '{{ $app_locale }}';
     </script>
-    <script src="{{ elixir('dist/js/all.js') }}"></script>
+    <script src="{{ URL::asset(elixir('dist/js/all.js')) }}"></script>
 </head>
 <body class="status-page @yield('bodyClass')">
     @yield('outer-content')
