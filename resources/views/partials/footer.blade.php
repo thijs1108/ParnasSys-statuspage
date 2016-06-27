@@ -23,7 +23,7 @@
                     @endif
                     @if(!$current_user)
                     <li>
-                        <a class="btn btn-link" href="/statuspage/public/auth/login">Login</a>
+                        <a class="btn btn-link" href="/statuspage/public/auth/login">{{ trans('dashboard.login.login') }}</a>
                     </li>
                     @endif
                     <li>
