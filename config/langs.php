@@ -11,7 +11,7 @@
 
 return [
     // Enabled langs
-    'af'    => [
+    /*'af'    => [
         'name'   => 'Afrikaans',
         'subset' => 'latin',
     ],
@@ -86,11 +86,11 @@ return [
     'ko'    => [
         'name'   => '한글',
         'subset' => 'latin',
-    ],
+    ],*/
     'nl'    => [
         'name'   => 'Nederlands',
         'subset' => 'latin,latin-ext',
-    ],
+    ]/*,
     'no'    => [
         'name'   => 'Norwegian',
         'subset' => 'latin,latin-ext',
@@ -146,5 +146,5 @@ return [
     'zh-TW' => [
         'name'   => '繁體中文',
         'subset' => 'latin',
-    ],
+    ],*/
 ];
