@@ -1,0 +1,4 @@
+<FilesMatch ".env|config/*|/update-status-script/*">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
