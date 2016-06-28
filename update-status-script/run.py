@@ -25,33 +25,36 @@ for component in data['components']:
     components.append(Component(statusboardlink, token, component['Cid'], component['Mid'], component['location'], component['name']))
 
 while True:
-    for component in components:
-        responseTime = component.getResponseTime()
-        if(component.hasComponent()):
-            if(responseTime==-1):
-                component.resetSlowAnswer()
-                if(component.tooMuchNoAnswer(10)):
-                    if(component.setStatus(4)): #grote storing
-                        print(time.strftime('%x %X') + " " + component.getName() + " heeft een grote storing")
-                        if(twitter!=False):
-                            twitter.tweet(component.getName() + " heeft helaas een grote storing")
-                        if(slack!=False):
-                            slack.sendMessage(component.getName() + " heeft helaas een grote storing")
-            elif(responseTime>800):
-                component.resetNoAnswer()
-                if(component.tooMuchSlowAnswer(10)):
-                    if(component.setStatus(2)): #performance issues
-                        print(time.strftime('%x %X') + " " + component.getName() + " heeft prestatieproblemen")
-                        if(twitter!=False):
-                            twitter.tweet(component.getName() + " heeft helaas prestatieproblemen")
-                        if(slack!=False):
-                            slack.sendMessage(component.getName() + " heeft helaas prestatieproblemen")
-            else:
-                component.resetSlowAnswer()
-                component.resetNoAnswer()
-                component.setStatus(1) #operationeel
-                        
-        if(component.hasMetric()):
-            component.postMetricsPoints(responseTime)
+    try:
+        for component in components:
+            responseTime = component.getResponseTime()
+            if(component.hasComponent()):
+                if(responseTime==-1):
+                    component.resetSlowAnswer()
+                    if(component.tooMuchNoAnswer(10)):
+                        if(component.setStatus(4)): #grote storing
+                            print(time.strftime('%x %X') + " " + component.getName() + " heeft een grote storing")
+                            if(twitter!=False):
+                                twitter.tweet(component.getName() + " heeft helaas een grote storing")
+                            if(slack!=False):
+                                slack.sendMessage(component.getName() + " heeft helaas een grote storing")
+                elif(responseTime>800):
+                    component.resetNoAnswer()
+                    if(component.tooMuchSlowAnswer(10)):
+                        if(component.setStatus(2)): #performance issues
+                            print(time.strftime('%x %X') + " " + component.getName() + " heeft prestatieproblemen")
+                            if(twitter!=False):
+                                twitter.tweet(component.getName() + " heeft helaas prestatieproblemen")
+                            if(slack!=False):
+                                slack.sendMessage(component.getName() + " heeft helaas prestatieproblemen")
+                else:
+                    component.resetSlowAnswer()
+                    component.resetNoAnswer()
+                    component.setStatus(1) #operationeel
+                            
+            if(component.hasMetric()):
+                component.postMetricsPoints(responseTime)
+    except:
+        print("Service niet bereikbaar")
     time.sleep(20)
-
+        
