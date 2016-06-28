@@ -37,7 +37,7 @@ while True:
                             twitter.tweet(component.getName() + " heeft helaas een grote storing")
                         if(slack!=False):
                             slack.sendMessage(component.getName() + " heeft helaas een grote storing")
-            elif(responseTime>8):
+            elif(responseTime>800):
                 component.resetNoAnswer()
                 if(component.tooMuchSlowAnswer(10)):
                     if(component.setStatus(2)): #performance issues
@@ -53,5 +53,5 @@ while True:
                         
         if(component.hasMetric()):
             component.postMetricsPoints(responseTime)
-    time.sleep(10)
+    time.sleep(20)
 
