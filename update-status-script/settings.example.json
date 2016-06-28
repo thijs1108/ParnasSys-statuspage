@@ -23,4 +23,10 @@
 		"Access_token": "",
 		"Access_token_secret": ""
 	}
+	
+	"slack":{
+		"use_slack": false,
+		"Access_token": "",
+		"channel": "#general"
+	}
 }
