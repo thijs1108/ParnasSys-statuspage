@@ -1,20 +1,20 @@
 {
-    "token" : "USER_TOKEN_HERE",
-	"statusboardlink" : "http://localhost/api/v1",
+    "token" : "",
+	"statusboardlink" : "http://localhost/",
 	
 	"components":[
 		{
 			"Cid":1,
 			"Mid":1,
-			"location": "http://localhost/"
-			"name": "Local service"
+			"location": "http://localhost/1",
+			"name": "local service 1"
 		},
 		{
-			"Cid":2,
-			"Mid":5,
-			"location": "http://localhost/2/"
-			"name": "Local service two"
-		}]
+			"Cid":3,
+			"Mid":2,
+			"location": "http://localhost/2",
+			"name": "local service 2"
+		}],
 		
 	"twitter": {
 		"use_twitter": false,
@@ -22,11 +22,12 @@
 		"Customer_secret" : "",
 		"Access_token": "",
 		"Access_token_secret": ""
-	}
+	},
 	
 	"slack":{
 		"use_slack": false,
 		"Access_token": "",
 		"channel": "#general"
 	}
+	
 }
