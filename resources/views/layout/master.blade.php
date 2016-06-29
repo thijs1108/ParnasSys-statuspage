@@ -7,8 +7,8 @@
     <meta name="env" content="{{ app('env') }}">
     <meta name="token" content="{{ csrf_token() }}">
 
-    <link rel="alternate" type="application/atom+xml" href="/atom" title="{{ $site_title }} - Atom Feed">
-    <link rel="alternate" type="application/rss+xml" href="/rss" title="{{ $site_title }} - RSS Feed">
+    <link rel="alternate" type="application/atom+xml" href="/statuspage/public/atom" title="{{ $site_title }} - Atom Feed">
+    <link rel="alternate" type="application/rss+xml" href="/statuspage/public/rss" title="{{ $site_title }} - RSS Feed">
 
     <!-- Mobile friendliness -->
     <meta name="HandheldFriendly" content="True">
@@ -19,30 +19,30 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ $site_title }}">
-    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:image" content="/statuspage/public/img/favicon.png">
     <meta property="og:description" content="{{ trans('cachet.description', ['app' => $app_name]) }}">
 
     <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
     <meta http-equiv="cleartype" content="on">
 
     <meta name="msapplication-TileColor" content="{{ $theme_greens }}" />
-    <meta name="msapplication-TileImage" content="/img/favicon.png" />
+    <meta name="msapplication-TileImage" content="/statuspage/public/img/favicon.png" />
 
     @if (isset($favicon))
-    <link rel="icon" type="image/png" href="/img/{{ $favicon }}.ico">
-    <link rel="shortcut icon" href="/img/{{ $favicon }}.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/statuspage/public/img/{{ $favicon }}.ico">
+    <link rel="shortcut icon" href="/statuspage/public/img/{{ $favicon }}.png" type="image/x-icon">
     @else
-    <link rel="icon" type="image/png" href="/img/favicon.ico">
-    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="/statuspage/public/img/favicon.ico">
+    <link rel="shortcut icon" href="/statuspage/public/img/favicon.png" type="image/x-icon">
     @endif
 
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" href="/statuspage/public/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/statuspage/public/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/statuspage/public/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/statuspage/public/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/statuspage/public/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/statuspage/public/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/statuspage/public/img/apple-touch-icon-152x152.png">
 
     <title>{{ $site_title }}</title>
 

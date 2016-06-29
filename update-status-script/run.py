@@ -55,6 +55,6 @@ while True:
             if(component.hasMetric()):
                 component.postMetricsPoints(responseTime)
     except:
-        print("Service niet bereikbaar")
+        print(time.strftime('%x %X') + " Service niet bereikbaar")
     time.sleep(20)
         
