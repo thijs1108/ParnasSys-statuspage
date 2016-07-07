@@ -4,3 +4,4 @@ phpunit.xml
 vendor
 update-status-script/settings.json
 update-status-script/__pycache__/
+public/update/settings.json
