@@ -20,30 +20,35 @@ function isDomainAvailible($domain)
 		return false;
 }
 
-function maintainAvailable($Cid, $isAvailable){
+function maintainAvailable($Cid, $isAvailable, $Cnaam, $responsetime){
 	
 	$json = json_decode(file_get_contents('status.json'), true);
 	$keyCid=strval($Cid);
 	if(!isset($json[$keyCid])){
 		$json[$keyCid]=0;
 	}
-	if($isAvailable){
+	if($isAvailable && $responsetime<=800){
 		$json[$keyCid]=0;
 	}
 	else{
 		$json[$keyCid]++;
 	}
 	if($json[$keyCid]>=3){
-		changeStatus($Cid, 4);
+		if($responsetime>=800){
+			changeStatus($Cid,2,$Cnaam);
+		}
+		else{
+			changeStatus($Cid, 4, $Cnaam);
+		}
 	}
 	else{
-		changeStatus($Cid,1);
+		changeStatus($Cid,1, $Cnaam);
 	}
 	file_put_contents('status.json', json_encode($json));
 
 }
 
-function changeStatus($Cid, $status){
+function changeStatus($Cid, $status, $Cnaam){
 	
 	$headers = array();
 	$headers[] = 'X-Cachet-Token: '. $_SESSION['settings']['token'];
@@ -68,6 +73,7 @@ function changeStatus($Cid, $status){
 		curl_setopt($ch,CURLOPT_HTTPHEADER, $headers);
 		curl_exec($ch);
 		curl_close($ch);
+		doSocialMedia($status, $Cnaam);
 	}
 
 }
@@ -85,5 +91,23 @@ function postMetricPoint($link, $token, $value){
 	curl_close($ch);
 }
 
+function doSocialMedia($status, $Cnaam){
+	
+	switch ($status){
+		case(1): $status= "operationeel"; break;
+		case(2): $status= "prestatieproblemen"; break;
+		case(3): $status= "kleine%20storing"; break;
+		case(4): $status= "grote%20storing";
+	}
+	
+	if($_SESSION['settings']['slack']['use_slack']==true){
+		$link = 'https://slack.com/api/chat.postMessage?token=' . $_SESSION['settings']['slack']['Access_token'] . '&channel=' . $_SESSION['settings']['slack']['channel'] . '&text=De%20status%20van%20' . urlencode($Cnaam) . '%20is%20gewijzigd%20naar%20' . $status ;
+		$ch = curl_init();
+		curl_setopt($ch,CURLOPT_URL, $link);
+		curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+		curl_exec($ch);
+		curl_close($ch);
+	}
+}
 
 ?>
